@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/tvHomeFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VERIFIEZ VOTRE CAR"
+            android:textSize="30sp"
+            android:textColor="@color/lavender"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@+id/etKilometrageDepart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Kilométrage de départ"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="50dp"/>
+
+        <EditText
+            android:id="@+id/etKilometrageArrivee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Kilométrage d'arrivée"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/btnVerifEntretien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vérifier entretien"
+            android:background="@color/lavender"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+</RelativeLayout>
