@@ -21,12 +21,26 @@
             android:textSize="30sp"
             android:textColor="@color/lavender"
             android:layout_gravity="center_horizontal"/>
+        <EditText
+            android:id="@+id/Marque"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Marque"
+            android:inputType="textPersonName"
+            android:layout_marginTop="50dp"/>
+        <EditText
+            android:id="@+id/vitesse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Vitesse"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="50dp"/>
 
         <EditText
             android:id="@+id/etKilometrageDepart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kilométrage de départ"
+            android:hint="Ancien_KM"
             android:inputType="numberDecimal"
             android:layout_marginTop="50dp"/>
 
@@ -34,9 +48,10 @@
             android:id="@+id/etKilometrageArrivee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kilométrage d'arrivée"
+            android:hint="Nouveau_KM"
             android:inputType="numberDecimal"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="50dp"/>
+
 
         <Button
             android:id="@+id/btnVerifEntretien"
@@ -48,6 +63,33 @@
             android:layout_marginTop="20dp"
 
             android:layout_gravity="center_horizontal"/>
+        <RadioGroup
+            android:id="@+id/radioGroupCarburant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/etKilometrageArrivee"
+            android:layout_centerHorizontal="true">
+
+            <RadioButton
+                android:id="@+id/rbEssence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Essence"
+                android:checked="true"/> <!-- Par défaut, la voiture est considérée comme à essence -->
+
+            <RadioButton
+                android:id="@+id/rbDiesel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Diesel"/>
+            <RadioButton
+                android:id="@+id/rbElectrique"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Electrique"/>
+        </RadioGroup>
 
     </LinearLayout>
 </RelativeLayout>
