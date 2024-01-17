@@ -1,0 +1,18 @@
+<resources>
+
+    <style name="AlertDialogGreen" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/green</item>
+        <!-- Autres attributs personnalisés ici si nécessaire -->
+    </style>
+
+    <style name="AlertDialogRed" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/red</item>
+    </style>
+
+    <style name="AlertDialogYellow" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/yellow</item>
+    </style>
+
+    <!-- Autres styles existants ou personnalisés ici -->
+
+</resources>

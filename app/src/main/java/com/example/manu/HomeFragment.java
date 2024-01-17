@@ -58,7 +58,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void afficherPopupEntretien() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogRed);
         builder.setTitle("Entretien requis");
         builder.setMessage("Il est temps d'effectuer l'entretien de votre voiture.");
         builder.setPositiveButton("OK", null);
@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void afficherPopupNonNecessaire() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogGreen);
         builder.setTitle("Entretien non requis");
         builder.setMessage("Le kilométrage n'est pas encore atteint pour effectuer l'entretien.");
         builder.setPositiveButton("OK", null);
@@ -76,7 +76,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void afficherPopupErreur() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogYellow);
         builder.setTitle("Erreur de saisie");
         builder.setMessage("Le kilométrage d'arrivée doit être supérieur au kilométrage de départ.");
         builder.setPositiveButton("OK", null);
