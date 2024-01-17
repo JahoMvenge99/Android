@@ -9,8 +9,6 @@ import android.widget.EditText;
 import android.widget.Button;
 import androidx.appcompat.app.AlertDialog;
 import android.widget.Toast;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 public class HomeFragment extends Fragment {
 
@@ -24,29 +22,12 @@ public class HomeFragment extends Fragment {
         EditText etKilometrageArrivee = view.findViewById(R.id.etKilometrageArrivee);
         Button btnVerifEntretien = view.findViewById(R.id.btnVerifEntretien);
 
-
         btnVerifEntretien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String departStr = etKilometrageDepart.getText().toString();
                 String arriveeStr = etKilometrageArrivee.getText().toString();
-                // Récupération des valeurs des EditText
-                String marque = ((EditText) view.findViewById(R.id.Marque)).getText().toString();
-                String vitesse = ((EditText) view.findViewById(R.id.vitesse)).getText().toString();
 
-                // Récupération du choix du bouton radio
-                RadioGroup radioGroup = view.findViewById(R.id.radioGroupCarburant);
-                int selectedId = radioGroup.getCheckedRadioButtonId();
-                RadioButton radioButton = view.findViewById(selectedId);
-                String typeCarburant = radioButton.getText().toString();
-
-//                // Affichage du popup
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//                builder.setTitle("Informations du véhicule");
-//                builder.setMessage("Marque: " + marque + "\nVitesse: " + vitesse + "\nType de carburant: " + typeCarburant);
-//                builder.setPositiveButton("OK", null);
-//                AlertDialog dialog = builder.create();
-//                dialog.show();
                 if (departStr.isEmpty() || arriveeStr.isEmpty()) {
                     Toast.makeText(getActivity(), "Veuillez remplir les deux champs de kilométrage.", Toast.LENGTH_SHORT).show();
                     return;
@@ -57,11 +38,11 @@ public class HomeFragment extends Fragment {
                     double arrivee = Double.parseDouble(arriveeStr);
 
                     if (depart > arrivee) {
-                        afficherPopupErreur(marque, vitesse, typeCarburant);
+                        afficherPopupErreur();
                     } else if (doitEffectuerEntretien(depart, arrivee)) {
-                        afficherPopupEntretien(marque, vitesse, typeCarburant);
+                        afficherPopupEntretien();
                     } else {
-                        afficherPopupNonNecessaire(marque, vitesse, typeCarburant);
+                        afficherPopupNonNecessaire();
                     }
                 } catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Veuillez entrer des nombres valides.", Toast.LENGTH_SHORT).show();
@@ -76,29 +57,28 @@ public class HomeFragment extends Fragment {
         return distance >= 1000; // Remplacez 1000 par le seuil d'entretien
     }
 
-    private void afficherPopupEntretien(String marque, String vitesse, String typeCarburant) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogRed);
+    private void afficherPopupEntretien() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Entretien requis");
-        builder.setMessage("Marque: " + marque + "\nVitesse: " + vitesse + "\nType de carburant: " + typeCarburant + "\nIl est temps d'effectuer l'entretien de votre voiture.");
-//        builder.setMessage("Il est temps d'effectuer l'entretien de votre voiture.");
+        builder.setMessage("Il est temps d'effectuer l'entretien de votre voiture.");
         builder.setPositiveButton("OK", null);
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
-    private void afficherPopupNonNecessaire(String marque, String vitesse, String typeCarburant) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogGreen);
+    private void afficherPopupNonNecessaire() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Entretien non requis");
-        builder.setMessage("Marque: " + marque + "\nVitesse: " + vitesse + "\nType de carburant: " + typeCarburant + "\nLe kilométrage n'est pas encore atteint pour effectuer l'entretien.");
+        builder.setMessage("Le kilométrage n'est pas encore atteint pour effectuer l'entretien.");
         builder.setPositiveButton("OK", null);
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
-    private void afficherPopupErreur(String marque, String vitesse, String typeCarburant) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogYellow);
+    private void afficherPopupErreur() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Erreur de saisie");
-        builder.setMessage("Marque: " + marque + "\nVitesse: " + vitesse + "\nType de carburant: " + typeCarburant + "\nLe kilométrage d'arrivée doit être supérieur au kilométrage de départ.");
+        builder.setMessage("Le kilométrage d'arrivée doit être supérieur au kilométrage de départ.");
         builder.setPositiveButton("OK", null);
         AlertDialog dialog = builder.create();
         dialog.show();
